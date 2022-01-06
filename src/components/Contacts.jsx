@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   Button, Box, Card, CardActions, CardContent, CardMedia, Typography,
 } from '@mui/material';
+import CallIcon from '@mui/icons-material/Call';
+import EditIcon from '@mui/icons-material/Edit';
 
 function Contacts() {
   const [contacts, setContacts] = useState([{}]);
@@ -44,8 +46,8 @@ function Contacts() {
               </Typography>
             </CardContent>
             <CardActions sx={{ justifyContent: 'space-between' }}>
-              <Button size="small" variant="contained" color="success">Call</Button>
-              <Button size="small" variant="contained" color="info">Edit details</Button>
+              <Button startIcon={<CallIcon />} size="small" variant="contained" color="success">Call</Button>
+              <Button startIcon={<EditIcon />} size="small" variant="contained" color="info">Edit details</Button>
             </CardActions>
           </Card>
         ))
