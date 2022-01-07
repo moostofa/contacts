@@ -47,7 +47,7 @@ function Results({ users }) {
 
 // unsure if this is correct but eslint keeps throwing warning for not defining proptypes
 Results.propTypes = {
-  users: PropTypes.shape([{}]).isRequired,
+  users: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Results;
