@@ -1,20 +1,32 @@
 import React from 'react';
 import {
-  AppBar, Box, CssBaseline, Toolbar, Typography, TextField,
+  AppBar, CssBaseline, Toolbar, Typography, IconButton, InputBase, Box,
 } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ProfileMenu from './ProfileMenu';
 
 function Navbar() {
   return (
-    <AppBar sx={{ maxHeight: 75 }} position="static">
+    <AppBar sx={{ maxHeight: 75, backgroundColor: 'cornflowerblue' }} position="static">
       <CssBaseline />
       <Toolbar>
-        <Typography variant="h5">
+        <IconButton>
+          <MenuIcon fontSize="large" />
+        </IconButton>
+        <Typography sx={{ mr: 2 }} variant="h5" color="black">
           Contacts
         </Typography>
-        <TextField placeholder="Search contacts..." />
-        <Box marginLeft="auto">
-          <h4>Profile</h4>
+        <Box sx={{
+          backgroundColor: 'aliceblue',
+          borderColor: 'red',
+          borderRadius: 2,
+          paddingLeft: 2,
+          ':hover': { backgroundColor: 'azure' },
+        }}
+        >
+          <InputBase size="large" placeholder="Search contacts..." />
         </Box>
+        <ProfileMenu />
       </Toolbar>
     </AppBar>
   );
