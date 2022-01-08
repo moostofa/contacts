@@ -29,10 +29,15 @@ function Results({ users }) {
               <Typography variant="h5" component="div">
                 { user.name }
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body1">
                 Email:
                 {' '}
                 { user.email }
+              </Typography>
+              <Typography variant="body2">
+                Phone:
+                {' '}
+                { user.phone }
               </Typography>
             </CardContent>
             <CardActions sx={{ justifyContent: 'space-between' }}>

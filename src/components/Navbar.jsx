@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  AppBar, CssBaseline, Toolbar, Typography, TextField,
+  AppBar, Box, CssBaseline, Toolbar, Typography, TextField,
 } from '@mui/material';
 
 function Navbar() {
@@ -12,6 +12,9 @@ function Navbar() {
           Contacts
         </Typography>
         <TextField placeholder="Search contacts..." />
+        <Box marginLeft="auto">
+          <h4>Profile</h4>
+        </Box>
       </Toolbar>
     </AppBar>
   );
