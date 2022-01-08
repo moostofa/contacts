@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Box, Button, Modal, Typography,
 } from '@mui/material';
@@ -11,12 +12,12 @@ const modalStyle = {
   transform: 'translate(-50%, -50%)',
   width: 0.5,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '2px solid black',
   boxShadow: 24,
   p: 4,
 };
 
-function EditButton() {
+function EditButton({ user }) {
   const [open, setOpen] = React.useState(false);
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
@@ -37,13 +38,17 @@ function EditButton() {
         onClose={closeModal}
       >
         <Box sx={modalStyle}>
-          <Typography variant="h1">
-            Hello popup modal
+          <Typography variant="body1">
+            { JSON.stringify(user) }
           </Typography>
         </Box>
       </Modal>
     </>
   );
 }
+
+EditButton.propTypes = {
+  user: PropTypes.shape({}).isRequired,
+};
 
 export default EditButton;

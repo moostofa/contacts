@@ -42,7 +42,7 @@ function Results({ users }) {
             </CardContent>
             <CardActions sx={{ justifyContent: 'space-between' }}>
               <Button startIcon={<CallIcon />} size="small" variant="contained" color="success">Call</Button>
-              <EditButton />
+              <EditButton user={user} />
             </CardActions>
           </Card>
         ))
