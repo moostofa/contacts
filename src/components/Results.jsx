@@ -4,7 +4,7 @@ import {
   Button, Box, Card, CardActions, CardContent, CardMedia, Typography,
 } from '@mui/material';
 import CallIcon from '@mui/icons-material/Call';
-import EditIcon from '@mui/icons-material/Edit';
+import EditButton from './EditButton';
 
 function Results({ users }) {
   return (
@@ -42,7 +42,7 @@ function Results({ users }) {
             </CardContent>
             <CardActions sx={{ justifyContent: 'space-between' }}>
               <Button startIcon={<CallIcon />} size="small" variant="contained" color="success">Call</Button>
-              <Button startIcon={<EditIcon />} size="small" variant="contained" color="info">Edit details</Button>
+              <EditButton />
             </CardActions>
           </Card>
         ))
