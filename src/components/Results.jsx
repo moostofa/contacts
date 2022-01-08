@@ -14,6 +14,7 @@ function Results({ users }) {
       alignItems="center"
       flexWrap="wrap"
       gap={5}
+      marginTop={5}
     >
       {
         users.map((user) => (
