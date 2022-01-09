@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Box, Button, Modal,
+  Box, Button, Grid, Modal, TextField,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -10,18 +10,19 @@ const modalStyle = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
+  height: 0.8,
   width: 0.5,
   bgcolor: 'background.paper',
   border: '2px solid black',
   boxShadow: 24,
   p: 4,
+  textAlign: 'left',
 };
 
 function EditButton({ user }) {
   const [open, setOpen] = React.useState(false);
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
-
   return (
     <>
       <Button
@@ -38,18 +39,21 @@ function EditButton({ user }) {
         onClose={closeModal}
       >
         <Box sx={modalStyle}>
-          <ul>
+          <Grid container gap={1}>
             {
-            Object.entries(user).map(([key, value]) => (
-              <li key={key}>
-                { JSON.stringify(key) }
-                :
-                {' '}
-                { JSON.stringify(value) }
-              </li>
-            ))
+            Object.entries(user)
+              .map(([key, value]) => (
+                <Grid container>
+                  <Grid item xs={2}>
+                    { key }
+                  </Grid>
+                  <Grid item xs={4}>
+                    <TextField size="small" label={key} defaultValue={value} />
+                  </Grid>
+                </Grid>
+              ))
           }
-          </ul>
+          </Grid>
         </Box>
       </Modal>
     </>
