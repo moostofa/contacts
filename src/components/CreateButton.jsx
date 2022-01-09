@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { IconButton, Tooltip } from '@mui/material';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-function CreateButton({ fields }) {
+function CreateButton() {
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
-    if (window.scrollY > 50) setVisible(true);
+    if (window.scrollY > 80) setVisible(true);
     else setVisible(false);
   };
 
@@ -33,9 +32,5 @@ function CreateButton({ fields }) {
     </div>
   );
 }
-
-CreateButton.protoTypes = {
-  fields: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
 
 export default CreateButton;

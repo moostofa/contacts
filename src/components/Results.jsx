@@ -49,7 +49,7 @@ function Results({ users }) {
           </Card>
         ))
       }
-      <CreateButton fields={Object.keys(users)} />
+      <CreateButton />
     </Box>
   );
 }
