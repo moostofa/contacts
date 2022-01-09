@@ -5,6 +5,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import ProfileMenu from './ProfileMenu';
 
+// navbar for moving between pages (not functional - just demo)
 function Navbar() {
   return (
     <AppBar sx={{ maxHeight: 75, backgroundColor: 'cornflowerblue' }} position="static">

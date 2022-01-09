@@ -6,6 +6,7 @@ import {
 import CallIcon from '@mui/icons-material/Call';
 import EditButton from './EditButton';
 
+// props comes from Contacts component - users is a list of contact details in object format
 function Results({ users }) {
   return (
     <Box
@@ -51,7 +52,6 @@ function Results({ users }) {
   );
 }
 
-// unsure if this is correct but eslint keeps throwing warning for not defining proptypes
 Results.propTypes = {
   users: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };

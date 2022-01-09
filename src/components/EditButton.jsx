@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
+// style rules for popup modal
 const modalStyle = {
   position: 'absolute',
   top: '50%',
@@ -19,11 +20,14 @@ const modalStyle = {
   textAlign: 'left',
 };
 
+// renders a button which reveals a form to update contact details
 function EditButton({ user }) {
+  // controls the opening & closing of popup modal
   const [open, setOpen] = React.useState(false);
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
+  // display all the contact's details
   const displayField = ([key, value]) => (
     <Grid item xs={6}>
       <Grid item xs={2}>
@@ -63,9 +67,10 @@ function EditButton({ user }) {
             Object.entries(user)
               .map(([key, value]) => (
                 typeof value === 'object'
-                  ? Object.entries(value).map(([nestedKeys, nestedValues]) => (
-                    displayField([nestedKeys, nestedValues])
-                  ))
+                  ? Object.entries(value)
+                    .map(([nestedKeys, nestedValues]) => (
+                      displayField([nestedKeys, nestedValues])
+                    ))
                   : displayField([key, value])
               ))
           }

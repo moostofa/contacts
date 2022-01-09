@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Results from './Results';
 
+// fetch & display a list of users from jsonplaceholder
 function Contacts() {
   const [contacts, setContacts] = useState([{}]);
 
