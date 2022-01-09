@@ -53,7 +53,7 @@ function EditButton({ user }) {
         onClose={closeModal}
       >
         <Box sx={modalStyle}>
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             <h1>
               Edit details for
               {' '}
@@ -69,6 +69,10 @@ function EditButton({ user }) {
                   : displayField([key, value])
               ))
           }
+            <Grid item marginLeft="auto">
+              <Button size="large" color="success" variant="contained" sx={{ marginRight: 2 }} onClick={closeModal}>Save</Button>
+              <Button size="large" color="info" variant="contained" onClick={closeModal}>Cancel</Button>
+            </Grid>
           </Grid>
         </Box>
       </Modal>
