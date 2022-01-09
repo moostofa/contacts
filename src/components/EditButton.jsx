@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Box, Button, Grid, Modal, TextField,
+  Box, Button, FormControl, Grid, Modal, TextField,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -10,7 +10,7 @@ const modalStyle = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  height: 0.8,
+  height: 0.9,
   width: 0.5,
   bgcolor: 'background.paper',
   border: '2px solid black',
@@ -23,6 +23,20 @@ function EditButton({ user }) {
   const [open, setOpen] = React.useState(false);
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
+
+  const displayField = ([key, value]) => (
+    <Grid item xs={6}>
+      <Grid item xs={2}>
+        { key[0].toUpperCase() + key.slice(1) }
+      </Grid>
+      <Grid item xs={8}>
+        <FormControl fullWidth>
+          <TextField size="small" label={key} defaultValue={value} />
+        </FormControl>
+      </Grid>
+    </Grid>
+  );
+
   return (
     <>
       <Button
@@ -39,18 +53,20 @@ function EditButton({ user }) {
         onClose={closeModal}
       >
         <Box sx={modalStyle}>
-          <Grid container gap={1}>
+          <Grid container spacing={2}>
+            <h1>
+              Edit details for
+              {' '}
+              { user.name }
+            </h1>
             {
             Object.entries(user)
               .map(([key, value]) => (
-                <Grid container>
-                  <Grid item xs={2}>
-                    { key }
-                  </Grid>
-                  <Grid item xs={4}>
-                    <TextField size="small" label={key} defaultValue={value} />
-                  </Grid>
-                </Grid>
+                typeof value === 'object'
+                  ? Object.entries(value).map(([nestedKeys, nestedValues]) => (
+                    displayField([nestedKeys, nestedValues])
+                  ))
+                  : displayField([key, value])
               ))
           }
           </Grid>
@@ -61,7 +77,9 @@ function EditButton({ user }) {
 }
 
 EditButton.propTypes = {
-  user: PropTypes.shape({}).isRequired,
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default EditButton;
