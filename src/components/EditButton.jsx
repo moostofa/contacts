@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Box, Button, Modal, Typography,
+  Box, Button, Modal,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -38,9 +38,18 @@ function EditButton({ user }) {
         onClose={closeModal}
       >
         <Box sx={modalStyle}>
-          <Typography variant="body1">
-            { JSON.stringify(user) }
-          </Typography>
+          <ul>
+            {
+            Object.entries(user).map(([key, value]) => (
+              <li key={key}>
+                { JSON.stringify(key) }
+                :
+                {' '}
+                { JSON.stringify(value) }
+              </li>
+            ))
+          }
+          </ul>
         </Box>
       </Modal>
     </>
