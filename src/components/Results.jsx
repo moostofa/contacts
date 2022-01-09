@@ -22,7 +22,7 @@ function Results({ users }) {
             <CardMedia
               component="img"
               height="150"
-              image="https://www.bigtopvoice.com/wp-content/uploads/2019/02/karlo-boni-1146386-unsplash.jpg"
+              image="https://27tcx2gd0ls2aa2s03qr8l8n-wpengine.netdna-ssl.com/wp-content/uploads/2018/05/kemptons-blank-profile-picture.jpg"
               alt="Profile picture"
             />
             <CardContent>
