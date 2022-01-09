@@ -5,6 +5,7 @@ import {
 } from '@mui/material';
 import CallIcon from '@mui/icons-material/Call';
 import EditButton from './EditButton';
+import CreateButton from './CreateButton';
 
 // props comes from Contacts component - users is a list of contact details in object format
 function Results({ users }) {
@@ -15,7 +16,7 @@ function Results({ users }) {
       alignItems="center"
       flexWrap="wrap"
       gap={5}
-      marginTop={5}
+      my={5}
     >
       {
         users.map((user) => (
@@ -48,6 +49,7 @@ function Results({ users }) {
           </Card>
         ))
       }
+      <CreateButton fields={Object.keys(users)} />
     </Box>
   );
 }
