@@ -23,6 +23,40 @@ function PopupModal({
     </Grid>
   );
 
+  const displayEditModal = () => (
+    <>
+      <h1>
+        Edit details for
+        {' '}
+        { user.name }
+      </h1>
+      {
+        Object.entries(user)
+          .map(([key, value]) => (
+            typeof value === 'object'
+              ? Object.entries(value)
+                .map(([nestedKeys, nestedValues]) => (
+                  displayField([nestedKeys, nestedValues])
+                ))
+              : displayField([key, value])
+          ))
+      }
+    </>
+  );
+
+  const displayCreationModal = () => (
+    <>
+      <Grid item xs={12}>
+        <h1>Create a new contact</h1>
+      </Grid>
+      {
+        fields.map((field) => (
+          displayField([field, ''])
+        ))
+      }
+    </>
+  );
+
   return (
     <Modal
       open
@@ -30,22 +64,9 @@ function PopupModal({
     >
       <Box sx={modalStyle}>
         <Grid container spacing={1}>
-          <h1>
-            Edit details for
-            {' '}
-            { user.name }
-          </h1>
           {
-            Object.entries(user)
-              .map(([key, value]) => (
-                typeof value === 'object'
-                  ? Object.entries(value)
-                    .map(([nestedKeys, nestedValues]) => (
-                      displayField([nestedKeys, nestedValues])
-                    ))
-                  : displayField([key, value])
-              ))
-          }
+          type === 'edit' ? displayEditModal() : displayCreationModal()
+        }
           <Grid item marginLeft="auto">
             <Button size="large" color="success" variant="contained" sx={{ marginRight: 2 }} onClick={closeModal}>Save</Button>
             <Button size="large" color="info" variant="contained" onClick={closeModal}>Cancel</Button>
