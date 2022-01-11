@@ -7,7 +7,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import modalStyle from './styles/ModalStyle';
 
 // renders a button which reveals a form to update contact details
-function EditButton({ user }) {
+function EditButton({ type, user, fields }) {
   // controls the opening & closing of popup modal
   const [open, setOpen] = React.useState(false);
   const openModal = () => setOpen(true);
@@ -72,9 +72,16 @@ function EditButton({ user }) {
 }
 
 EditButton.propTypes = {
+  type: PropTypes.string.isRequired,
   user: PropTypes.shape({
     name: PropTypes.string,
-  }).isRequired,
+  }),
+  fields: PropTypes.arrayOf(PropTypes.string),
+};
+
+EditButton.defaultProps = {
+  user: {},
+  fields: [],
 };
 
 export default EditButton;
