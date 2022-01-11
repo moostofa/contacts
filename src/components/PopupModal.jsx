@@ -23,6 +23,7 @@ function PopupModal({
     </Grid>
   );
 
+  // modal for editing should contained pre-filled data of the contact
   const displayEditModal = () => (
     <>
       <h1>
@@ -44,6 +45,7 @@ function PopupModal({
     </>
   );
 
+  // contact creation model will have empty textfields
   const displayCreationModal = () => (
     <>
       <Grid item xs={12}>

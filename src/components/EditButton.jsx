@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import PopupModal from './PopupModal';
 
+// an edit button which displays a popup form to edit a contact's details
 function EditButton({ user }) {
   // controls the opening & closing of popup modal
   const [open, setOpen] = React.useState(false);
