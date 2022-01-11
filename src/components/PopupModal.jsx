@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 import {
   Box, Button, FormControl, Grid, Modal, TextField,
 } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import modalStyle from './styles/ModalStyle';
 
 // renders a button which reveals a form to update contact details
-function PopupModal({ type, user, fields }) {
-  // controls the opening & closing of popup modal
-  const [open, setOpen] = React.useState(false);
-  const openModal = () => setOpen(true);
-  const closeModal = () => setOpen(false);
-
-  // display all the contact's details
+function PopupModal({ user, closeModal }) {
+  // display all the contact's details. This function is called iteratively in the return () method
   const displayField = ([key, value]) => (
     <Grid key={key} item xs={6}>
       <Grid item xs={2}>
@@ -28,28 +22,18 @@ function PopupModal({ type, user, fields }) {
   );
 
   return (
-    <>
-      <Button
-        startIcon={<EditIcon />}
-        size="small"
-        variant="contained"
-        color="info"
-        onClick={openModal}
-      >
-        Edit details
-      </Button>
-      <Modal
-        open={open}
-        onClose={closeModal}
-      >
-        <Box sx={modalStyle}>
-          <Grid container spacing={1}>
-            <h1>
-              Edit details for
-              {' '}
-              { user.name }
-            </h1>
-            {
+    <Modal
+      open
+      onClose={closeModal}
+    >
+      <Box sx={modalStyle}>
+        <Grid container spacing={1}>
+          <h1>
+            Edit details for
+            {' '}
+            { user.name }
+          </h1>
+          {
             Object.entries(user)
               .map(([key, value]) => (
                 typeof value === 'object'
@@ -60,28 +44,21 @@ function PopupModal({ type, user, fields }) {
                   : displayField([key, value])
               ))
           }
-            <Grid item marginLeft="auto">
-              <Button size="large" color="success" variant="contained" sx={{ marginRight: 2 }} onClick={closeModal}>Save</Button>
-              <Button size="large" color="info" variant="contained" onClick={closeModal}>Cancel</Button>
-            </Grid>
+          <Grid item marginLeft="auto">
+            <Button size="large" color="success" variant="contained" sx={{ marginRight: 2 }} onClick={closeModal}>Save</Button>
+            <Button size="large" color="info" variant="contained" onClick={closeModal}>Cancel</Button>
           </Grid>
-        </Box>
-      </Modal>
-    </>
+        </Grid>
+      </Box>
+    </Modal>
   );
 }
 
 PopupModal.propTypes = {
-  type: PropTypes.string.isRequired,
   user: PropTypes.shape({
     name: PropTypes.string,
-  }),
-  fields: PropTypes.arrayOf(PropTypes.string),
-};
-
-PopupModal.defaultProps = {
-  user: {},
-  fields: [],
+  }).isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default PopupModal;
