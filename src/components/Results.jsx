@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button, Box, Card, CardActions, CardContent, CardMedia, Typography,
+  Box, Card, CardActions, CardContent, CardMedia, Typography,
 } from '@mui/material';
-import CallIcon from '@mui/icons-material/Call';
-import EditButton from './EditButton';
 import CreateButton from './CreateButton';
+import EditButton from './EditButton';
+import CallButton from './CallButton';
 
 // props comes from Contacts component - users is a list of contact details in object format
 function Results({ users }) {
@@ -44,14 +44,14 @@ function Results({ users }) {
                 </Typography>
               </CardContent>
               <CardActions sx={{ justifyContent: 'space-between' }}>
-                <Button startIcon={<CallIcon />} size="small" variant="contained" color="success">Call</Button>
+                <CallButton />
                 <EditButton user={user} />
               </CardActions>
             </Card>
           </div>
         ))
       }
-      <CreateButton />
+      <CreateButton fields={Object.keys(users[0])} />
     </Box>
   );
 }
