@@ -4,7 +4,7 @@ import {
   Button, Box, Card, CardActions, CardContent, CardMedia, Typography,
 } from '@mui/material';
 import CallIcon from '@mui/icons-material/Call';
-import EditButton from './EditButton';
+import PopupModal from './PopupModal';
 import CreateButton from './CreateButton';
 
 // props comes from Contacts component - users is a list of contact details in object format
@@ -45,7 +45,7 @@ function Results({ users }) {
               </CardContent>
               <CardActions sx={{ justifyContent: 'space-between' }}>
                 <Button startIcon={<CallIcon />} size="small" variant="contained" color="success">Call</Button>
-                <EditButton user={user} />
+                <PopupModal user={user} />
               </CardActions>
             </Card>
           </div>
