@@ -5,9 +5,11 @@ import {
 } from '@mui/material';
 import modalStyle from './styles/ModalStyle';
 
-// renders a button which reveals a form to update contact details
-function PopupModal({ user, closeModal }) {
-  // display all the contact's details. This function is called iteratively in the return () method
+// renders a button which reveals a form to update or create contact details
+function PopupModal({
+  type, user, fields, closeModal,
+}) {
+  // display each field for a contact
   const displayField = ([key, value]) => (
     <Grid key={key} item xs={6}>
       <Grid item xs={2}>
@@ -55,10 +57,17 @@ function PopupModal({ user, closeModal }) {
 }
 
 PopupModal.propTypes = {
+  type: PropTypes.string.isRequired,
   user: PropTypes.shape({
     name: PropTypes.string,
-  }).isRequired,
+  }),
+  fields: PropTypes.arrayOf(PropTypes.string),
   closeModal: PropTypes.func.isRequired,
+};
+
+PopupModal.defaultProps = {
+  user: {},
+  fields: [],
 };
 
 export default PopupModal;

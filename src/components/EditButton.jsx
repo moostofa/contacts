@@ -21,7 +21,7 @@ function EditButton({ user }) {
       >
         Edit details
       </Button>
-      { open && <PopupModal user={user} closeModal={closeModal} /> }
+      { open && <PopupModal type="edit" user={user} closeModal={closeModal} /> }
     </>
   );
 }

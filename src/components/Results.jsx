@@ -51,7 +51,7 @@ function Results({ users }) {
           </div>
         ))
       }
-      <CreateButton />
+      <CreateButton fields={Object.keys(users[0])} />
     </Box>
   );
 }
