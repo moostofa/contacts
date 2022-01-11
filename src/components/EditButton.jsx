@@ -4,21 +4,7 @@ import {
   Box, Button, FormControl, Grid, Modal, TextField,
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-
-// style rules for popup modal
-const modalStyle = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  height: 0.9,
-  width: 0.5,
-  bgcolor: 'background.paper',
-  border: '2px solid black',
-  boxShadow: 24,
-  p: 4,
-  textAlign: 'left',
-};
+import modalStyle from './styles/ModalStyle';
 
 // renders a button which reveals a form to update contact details
 function EditButton({ user }) {
