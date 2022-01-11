@@ -5,11 +5,10 @@ import {
 } from '@mui/material';
 import modalStyle from './styles/ModalStyle';
 
-// renders a button which reveals a form to update or create contact details
 function PopupModal({
   type, user, fields, closeModal,
 }) {
-  // display each field for a contact
+  // display an editable textfield for each contact field
   const displayField = ([key, value]) => (
     <Grid key={key} item xs={6}>
       <Grid item xs={2}>
@@ -23,7 +22,7 @@ function PopupModal({
     </Grid>
   );
 
-  // modal for editing should contained pre-filled data of the contact
+  // modal for editing should contain pre-filled data of the contact
   const displayEditModal = () => (
     <>
       <h1>
@@ -45,7 +44,7 @@ function PopupModal({
     </>
   );
 
-  // contact creation model will have empty textfields
+  // contact creation modal will have empty textfields
   const displayCreationModal = () => (
     <>
       <Grid item xs={12}>
