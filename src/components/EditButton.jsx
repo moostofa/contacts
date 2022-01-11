@@ -15,7 +15,7 @@ function EditButton({ user }) {
 
   // display all the contact's details
   const displayField = ([key, value]) => (
-    <Grid item xs={6}>
+    <Grid key={key} item xs={6}>
       <Grid item xs={2}>
         { key[0].toUpperCase() + key.slice(1) }
       </Grid>
@@ -73,7 +73,7 @@ function EditButton({ user }) {
 
 EditButton.propTypes = {
   user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }).isRequired,
 };
 
